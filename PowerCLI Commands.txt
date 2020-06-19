@@ -1,0 +1,55 @@
+﻿PowerCLI C:\> Connect-VIserver
+PowerCLI C:\> Get-VM
+
+
+--------------  EXAMPLE 1 --------------
+
+    C:\PS>Connect-VIServer -Server 10.23.112.235 -Protocol https -User NateWeiler
+    -Password $Hustle4$
+    Connects to a vSphere server using the User and Password parameters.
+    --------------  EXAMPLE 2 --------------
+
+    C:\PS>Connect-VIServer Server -Credentials $myCredentialsObject -Port 1234
+    Connects to a vSphere server by using a credential object.
+
+    --------------  Example 3 --------------
+
+    C:\PS>Connect-VIServer "Server" -SessionId $sessionId
+
+    Connect by using a server session ID.
+    Once you connect to a server, you can save the session ID -
+    $serverObject.SessionId, so that you can restore the existing server
+    connection instead of reconnecting.
+
+   --------------  Example 4 --------------
+
+    C:\PS>Connect-VIServer Server
+
+   Connect by using integrated authentication. In this case, the credentials
+   you are logged on to your machine must be the same as those for the server
+
+    --------------  Example 5 --------------
+
+C:\PS>Connect-VIServer "Server" -User user -Password pass -SaveCredentials
+    Connect to a server and save the credentials in the credential store.
+    After the credentials are stored, you can connect to the server without
+    specifying them. To get a previously saved credential store item, use the
+    Get-VICredentialStoreItem cmdlet.
+
+    -------------- Example 6 --------------
+
+    C:\PS>Connect-VIServer –Menu
+
+    Connect to a server by choosing the server address from a list of
+    Previously connected servers.
+
+    -------------- Example 7 --------------
+
+    C:\PS>Connect-VIServer "Server" -All Linked
+
+    Connect to a vSphere server which is a part of a federation vCenter
+    Server. This will connect you to all vSphere servers in the federation as
+	
+Connect-VIServer -Server 192.168.200.205	
+	
+	
