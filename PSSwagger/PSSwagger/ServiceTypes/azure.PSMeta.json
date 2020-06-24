@@ -1,0 +1,9 @@
+{
+  "info": {
+    "x-ps-code-generation-settings": {
+      "azureDefaults": {
+        "clientSideFiltering": true
+      }
+    }
+  }
+}

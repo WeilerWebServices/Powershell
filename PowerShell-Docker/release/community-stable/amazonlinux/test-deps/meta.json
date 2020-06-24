@@ -1,0 +1,11 @@
+{
+    "IsLinux" : true,
+    "SkipGssNtlmSspTests": true,
+    "tagTemplates": [
+        "amazonlinux-#shorttag#"
+    ],
+    "FullRepository": "pshorg/powershellcommunity-test-deps",
+    "OptionalTests": [
+        "test-deps"
+    ]
+}

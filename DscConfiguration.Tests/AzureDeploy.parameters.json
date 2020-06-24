@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dnsLabelPrefix": {
+      "value": "[concat(uniquestring(resourceGroup().id)]"
+    },
+    "vmName": {
+      "value": "vm"
+    },
+    "storageAccountName": {
+      "value": "[concat( uniquestring(resourceGroup().id, 'sa')]"
+    },
+    "nicName": {
+      "value": "nic"
+    },
+    "publicIPAddressName": {
+      "value": "pip"
+    },
+    "virtualNetworkName": {
+      "value": "net"
+    },
+    "nsgName": {
+      "value": "nsg"
+    },
+    "adminUsername": {
+      "value": "dscAdmin"
+    },
+    "WindowsOSVersion": {
+      "value": "2016-Datacenter"
+    }
+  }
+}

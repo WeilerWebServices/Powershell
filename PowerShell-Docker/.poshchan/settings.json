@@ -1,0 +1,29 @@
+{
+    "version": "0.1",
+    "azdevops": {
+        "organization": "powershell",
+        "project": "docker",
+        "build_targets": {
+            "CI": "docker-PR"
+        },
+        "authorized_users": [
+            "SteveL-MSFT",
+            "TravisEz13",
+            "anmenaga",
+            "RDIL",
+            "kiazhi"
+        ],
+    },
+    "failures": {
+        "authorized_users": [
+            "adityapatwardhan",
+            "anmenaga",
+            "TravisEz13",
+            "RDIL",
+            "kiazhi"
+        ]
+    },
+    "reminders": {
+        "authorized_users": "*"
+    }
+}

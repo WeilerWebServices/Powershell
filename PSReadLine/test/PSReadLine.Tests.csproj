@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{8ED51D01-158C-4B29-824A-35B9B861E45A}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>UnitTestPSReadLine</RootNamespace>
+    <AssemblyName>PSReadLine.Tests</AssemblyName>
+    <TargetFrameworks>net461;netcoreapp2.1</TargetFrameworks>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+    <RuntimeFrameworkVersion>2.1.13</RuntimeFrameworkVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Xml.XDocument" version="4.3.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" version="4.5.0" />
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" version="4.3.0" />
+    <PackageReference Include="Microsoft.CSharp" version="4.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" Condition="'$(TargetFramework)' == 'netcoreapp2.1'" />
+    <PackageReference Include="PowerShellStandard.Library" version="5.1.0-*" Condition="'$(TargetFramework)' == 'net461'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="Xunit.SkippableFact" Version="1.3.12" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="XunitXml.TestLogger" Version="2.1.26" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PSReadLine\PSReadLine.csproj">
+      <Project>{615788cb-1b9a-4b34-97b3-4608686e59ca}</Project>
+      <Name>PSReadLine</Name>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="KeyInfo-en-US-windows.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="KeyInfo-en-windows.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="KeyInfo-fr-FR-windows.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="KeyInfo-fr-windows.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

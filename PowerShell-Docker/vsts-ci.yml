@@ -1,0 +1,64 @@
+name: PR-$(System.PullRequest.PullRequestNumber)-$(Date:yyyyMMdd)$(Rev:.rr)
+
+resources:
+- repo: self
+  clean: true
+
+variables:
+  POWERSHELL_TELEMETRY_OPTOUT: 1
+
+stages:
+  - template: .vsts-ci/stage.yml
+    parameters:
+      channel: stable
+  - template: .vsts-ci/stage.yml
+    parameters:
+      channel: preview
+  - template: .vsts-ci/stage.yml
+    parameters:
+      channel: lts
+  - template: .vsts-ci/stage.yml
+    parameters:
+      channel: community-stable
+      jobName: community_stable
+
+  - stage: CheckForDuplicateTags
+    displayName: Check for duplicate tags
+    dependsOn: []
+    jobs:
+    - job: CheckForDuplicateTags
+      pool:
+        vmImage: ubuntu-18.04
+      displayName: Check For Duplicate Tags
+      steps:
+      - pwsh: Write-Host "##vso[build.updatebuildnumber]$env:BUILD_SOURCEBRANCHNAME-$env:BUILD_SOURCEVERSION-$((get-date).ToString("yyyyMMddhhss"))"
+        displayName: Set Build Name for Non-PR
+        condition: ne(variables['Build.Reason'], 'PullRequest')
+      - pwsh: ./build.ps1 -CheckForDuplicateTags -Channel stable, preview, servicing, lts
+        displayName: Check for Duplicate Tags
+        condition: succeededOrFailed()
+
+  - stage: Secret_Scan
+    displayName: Secret Scan
+    dependsOn: []
+    jobs:
+    - job: Secret_Scan
+      pool: 'Hosted VS2017'
+      displayName: Secret Scan
+
+      steps:
+      - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+        displayName: 'Scan for secrets'
+        inputs:
+          debugMode: false
+          toolMajorVersion: V2
+
+      - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
+        displayName: 'Publish Secret Scan Logs to Build Artifacts'
+        continueOnError: true
+
+      - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
+        displayName: 'Check for Failures'
+        inputs:
+          CredScan: true
+          ToolLogsNotFoundAction: Error

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Microsoft.PowerShell.PSReadLine</RootNamespace>
+    <AssemblyName>Microsoft.PowerShell.PSReadLine2</AssemblyName>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.0</FileVersion>
+    <InformationalVersion>2.1.0-beta2</InformationalVersion>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <TargetFrameworks>net461;netcoreapp2.1</TargetFrameworks>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+    <RuntimeFrameworkVersion>2.1.13</RuntimeFrameworkVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PowerShellStandard.Library" version="5.1.0-*" />
+    <PackageReference Include="Microsoft.CSharp" version="4.5.0-*" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PSReadLine.psd1" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="PSReadLine.psm1" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="PSReadLine.format.ps1xml" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="SamplePSReadLineProfile.ps1" />
+    <None Include="Changes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\docs\about_PSReadLine.help.txt" Link="docs\about_PSReadLine.help.txt" />
+    <None Include="..\docs\Get-PSReadLineKeyHandler.md" Link="docs\Get-PSReadLineKeyHandler.md" />
+    <None Include="..\docs\Get-PSReadLineOption.md" Link="docs\Get-PSReadLineOption.md" />
+    <None Include="..\docs\Set-PSReadLineKeyHandler.md" Link="docs\Set-PSReadLineKeyHandler.md" />
+    <None Include="..\docs\Set-PSReadLineOption.md" Link="docs\Set-PSReadLineOption.md" />
+  </ItemGroup>
+</Project>

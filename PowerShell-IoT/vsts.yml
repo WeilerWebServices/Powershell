@@ -1,0 +1,16 @@
+resources:
+- repo: self
+queue:
+  name: PowerShell IoT
+  demands: DotNetFramework
+steps:
+- task: PowerShell@1
+  displayName: Run Build
+  inputs:
+    scriptType: inlineScript
+    inlineScript: pwsh -c ./tools/vsts.ps1
+- task: PublishTestResults@2
+  displayName: Publish Test Results
+  inputs:
+    testRunner: NUnit
+    testResultsFiles: '**\Test*.xml'
