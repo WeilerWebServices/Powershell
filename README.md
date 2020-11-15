@@ -51,14 +51,14 @@ The notation used for pipelines is similar to the notation used in other shells.
 
 For example, if you use the `Out-Host` cmdlet to force a page-by-page display of output from another command, the output looks just like the normal text displayed on the screen, broken up into pages:
 
-PowerShellCopy
+PowerShell
 
 ```
 Get-ChildItem | Out-Host -Paging
 
 ```
 
-OutputCopy
+Output
 
 ```
     Directory: /mnt/c/Git/PS-Docs/PowerShell-Docs/reference/7.0/Microsoft.PowerShell.Core
@@ -92,14 +92,14 @@ When you run a cmdlet in PowerShell, you see text output because it is necessary
 
 For example, consider the `Get-Location` cmdlet. The text output is a summary of information, not a complete representation of the object returned by `Get-Location`. The heading in the output is added by the process that formats the data for onscreen display.
 
-PowerShellCopy
+PowerShell
 
 ```
 Get-Location
 
 ```
 
-OutputCopy
+Output
 
 ```
 Path
@@ -110,14 +110,14 @@ C:
 
 Piping the output to the `Get-Member` cmdlet displays information about the object returned by `Get-Location`.
 
-PowerShellCopy
+PowerShell
 
 ```
 Get-Location | Get-Member
 
 ```
 
-OutputCopy
+Output
 
 ```
    TypeName: System.Management.Automation.PathInfo
